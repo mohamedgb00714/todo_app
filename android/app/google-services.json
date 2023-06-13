@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "349953827130-3pm07o2jr80nar1amcp4q0k4c25m5go0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.todo.is",
+            "certificate_hash": "fa5a6b06393e6d9abda7483078ecf8baf69edc88"
+          }
+        },
+        {
+          "client_id": "349953827130-dibjvrninj8cupu87prljijiq0ojtb9t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.todo.is",
+            "certificate_hash": "d7f45f936c5b9646148d6937cb512d14af30edbb"
+          }
+        },
+        {
           "client_id": "349953827130-bloublai4liatdvh5ujlhnm7stnu4m96.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -30,6 +46,13 @@
             {
               "client_id": "349953827130-bloublai4liatdvh5ujlhnm7stnu4m96.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "349953827130-hcvjibv6apnrsr4ok1m8b982g1n65tck.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.todoApp"
+              }
             }
           ]
         }

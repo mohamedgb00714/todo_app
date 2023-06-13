@@ -9,13 +9,16 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:http/http.dart' as http;
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:webview_flutter_android/webview_flutter_android.dart';
+
+import 'dart:io';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   runApp(const MyApp());
 }
 
@@ -154,6 +157,24 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     )
     ..loadRequest(Uri.parse('https://todo.is/login'));
+  Future<List<String>> _androidFilePicker(
+      final FileSelectorParams params) async {
+    final result = await FilePicker.platform.pickFiles();
+
+    if (result != null && result.files.single.path != null) {
+      final file = File(result.files.single.path!);
+      return [file.uri.toString()];
+    }
+    return [];
+  }
+
+  void addFileSelectionListener() async {
+    if (Platform.isAndroid) {
+      final androidController = controller.platform as AndroidWebViewController;
+      await androidController.setOnShowFileSelector(_androidFilePicker);
+    }
+  }
+
   void _navigateToWebView() {
     Navigator.push(
       context,
@@ -190,6 +211,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               })
             });
+    addFileSelectionListener();
     controller.setNavigationDelegate(
       NavigationDelegate(
         onProgress: (int progress) {
@@ -228,6 +250,7 @@ class _MyHomePageState extends State<MyHomePage> {
         _signInWithGoogle();
       },
     );
+
     return WillPopScope(
         onWillPop: () => _exitApp(context),
         child: Scaffold(

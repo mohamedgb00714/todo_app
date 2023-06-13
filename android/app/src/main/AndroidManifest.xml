@@ -3,7 +3,7 @@
         <provider android:authorities="com.facebook.katana.provider.PlatformProvider" />
     </queries>
     <application
-        android:label="todo_app"
+        android:label="Todo.is"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <meta-data
